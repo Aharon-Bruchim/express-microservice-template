@@ -1,4 +1,3 @@
-/* v8 ignore start */
 export interface Payment {
     name: string;
     email: string;

@@ -1,12 +1,21 @@
-import 'dotenv/config';
+import path from 'path';
+import dotenv from 'dotenv';
 import env from 'env-var';
+
+const nodeEnv = process.env['NODE_ENV'] ?? 'development';
+
+const envFile = nodeEnv === 'production' ? '.env.production' : '.env.development';
+dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
 export const config = {
     service: {
         port: env.get('PORT').default(8000).required().asPortNumber(),
     },
     mongo: {
-        uri: env.get('MONGO_URI').default('mongodb://localhost/payment_requests_automatic').required().asString(),
-        paymentCollectionName: env.get('PAYMENT_REQUESTS_AUTOMATIC').default('users').required().asString(),
+        uri: env.get('MONGO_URI').required().asString(),
+        paymentCollectionName: env.get('PAYMENT_REQUESTS_AUTOMATIC').required().asString(),
+    },
+    cors: {
+        origin: env.get('CORS_ORIGIN').required().asString(),
     },
 };

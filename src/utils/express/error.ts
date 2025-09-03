@@ -14,14 +14,12 @@ export const errorMiddleware = (error: Error, _req: Request, res: Response, next
             type: error.name,
             message: error.message,
         });
-        /* v8 ignore start */
     } else {
         res.status(500).send({
             type: error.name,
             message: error.message,
         });
     }
-    /* v8 ignore end */
 
     next();
 };

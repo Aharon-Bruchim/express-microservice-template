@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 export class ServiceError extends Error {
     constructor(
         public code: number,
