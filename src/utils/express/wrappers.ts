@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { ReqSchema, TypedRequest, SchemaOutput } from '../zod';
 
-export const wrapMiddleware = (func: (req: Request, res?: Response) => Promise<void>) => {
+const wrapMiddleware = (func: (req: Request, res?: Response) => Promise<void>) => {
     return (req: Request, res: Response, next: NextFunction) => {
         func(req, res).then(next).catch(next);
     };

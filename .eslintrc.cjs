@@ -7,8 +7,8 @@ module.exports = {
     },
     extends: [
         'eslint:recommended',
-        '@typescript-eslint/recommended-type-checked',
-        '@typescript-eslint/stylistic-type-checked',
+        'plugin:@typescript-eslint/recommended-type-checked',
+        'plugin:@typescript-eslint/stylistic-type-checked',
         'plugin:promise/recommended',
         'plugin:import/recommended',
         'plugin:import/typescript',
