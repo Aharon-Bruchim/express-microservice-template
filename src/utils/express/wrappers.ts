@@ -23,7 +23,16 @@ export const validateRequest = <T extends ReqSchema>(schema: T) => {
 
         const r = req as unknown as TypedRequest<T>;
         r.body = parsed.body as typeof r.body;
-        r.query = parsed.query as typeof r.query;
         r.params = parsed.params as typeof r.params;
+
+        try {
+            r.query = parsed.query as typeof r.query;
+        } catch {
+            Object.defineProperty(r, 'query', {
+                get: () => parsed.query,
+                enumerable: true,
+                configurable: true,
+            });
+        }
     });
 };
