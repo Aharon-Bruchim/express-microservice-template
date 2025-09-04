@@ -20,13 +20,6 @@ export const getByQueryRequestSchema = z.object({
     params: z.object({}),
 });
 
-// GET /api/payment/count
-export const getCountRequestSchema = z.object({
-    body: z.object({}),
-    query: requiredFields.partial(),
-    params: z.object({}),
-});
-
 // GET /api/payment/:id
 export const getByIdRequestSchema = z.object({
     body: z.object({}),
