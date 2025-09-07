@@ -4,13 +4,12 @@
 
 ## התקנה
 
-1. יש לוודא שמותקן Node.js ו־npm במחשב.
-2. לשכפל את הריפוזיטורי:
+1. לשכפל את הריפוזיטורי:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/Aharon-Bruchim/express-microservice-template.git
     cd template
     ```
-3. להתקין את התלויות:
+2. להתקין את התלויות:
     ```bash
     npm install
     ```
@@ -22,7 +21,7 @@
 - לשם הקולקשיין של תשלומים במונגו:
 
     ```typescript
-    paymentCollectionName: 'שם_הקולקשיין_שלך',
+    paymentCollectionName: 'your collection name',
     ```
 
 - ניתן להגדיר משתני סביבה בקובץ `.env`.
@@ -32,7 +31,7 @@
 להריץ את האפליקציה:
 
 ```bash
-npm start
+npm run dev
 ```
 
 ## מבנה הפרויקט
@@ -40,11 +39,3 @@ npm start
 - `src/` — קוד המקור של האפליקציה
 - `config.ts` — הגדרות וקונפיגורציה
 - `package.json` — מידע על הפרויקט ותלויות
-
-## תרומה
-
-נשמח לקבל Pull Requests ושיפורים!
-
-## רישיון
-
-הפרויקט תחת רישיון
