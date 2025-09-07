@@ -9,6 +9,6 @@ appRouter.use(['/isAlive', '/isalive', '/health'], (_req, res) => {
     res.status(200).send('alive');
 });
 
-appRouter.use('*', (_req, res) => {
+appRouter.use((_req, res) => {
     res.status(404).send('Invalid Route');
 });

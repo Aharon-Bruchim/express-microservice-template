@@ -1,13 +1,24 @@
 import { Response } from 'express';
 import { TypedRequest } from '../../utils/zod';
 import { PaymentManager } from './manager';
-import { createOneRequestSchema, deleteOneRequestSchema, getByIdRequestSchema, getByQueryRequestSchema, updateOneRequestSchema } from './validations';
+import {
+    createOneRequestSchema,
+    deleteOneRequestSchema,
+    getByIdRequestSchema,
+    getByQueryRequestSchema,
+    getCountRequestSchema,
+    updateOneRequestSchema,
+} from './validations';
 
 export class PaymentController {
     static getByQuery = async (req: TypedRequest<typeof getByQueryRequestSchema>, res: Response) => {
         const { step, limit, ...query } = req.query;
 
         res.json(await PaymentManager.getByQuery(query, step, limit));
+    };
+
+    static getCount = async (req: TypedRequest<typeof getCountRequestSchema>, res: Response) => {
+        res.json(await PaymentManager.getCount(req.query));
     };
 
     static getById = async (req: TypedRequest<typeof getByIdRequestSchema>, res: Response) => {

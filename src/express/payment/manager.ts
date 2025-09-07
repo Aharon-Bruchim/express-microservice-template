@@ -9,6 +9,10 @@ export class PaymentManager {
             .exec();
     };
 
+    static getCount = async (query: Partial<Payment>): Promise<number> => {
+        return PaymentModel.countDocuments(query).lean().exec();
+    };
+
     static getById = async (paymentId: string): Promise<PaymentDocument> => {
         return PaymentModel.findById(paymentId).orFail(new DocumentNotFoundError(paymentId)).lean().exec();
     };

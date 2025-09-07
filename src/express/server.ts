@@ -36,6 +36,6 @@ export class Server {
 
     async start() {
         this.http = this.app.listen(this.port);
-        ~(await once(this.http, 'listening'));
+        await once(this.http, 'listening');
     }
 }

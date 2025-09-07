@@ -2,21 +2,30 @@ import { NextFunction, Request, Response } from 'express';
 import { ReqSchema, TypedRequest, SchemaOutput } from '../zod';
 
 const wrapMiddleware = (func: (req: Request, res?: Response) => Promise<void>) => {
-    return (req: Request, res: Response, next: NextFunction) => {
-        func(req, res).then(next).catch(next);
+    return async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            await func(req, res);
+            next();
+        } catch (error) {
+            next(error);
+        }
     };
 };
 
 export const wrapController = <T extends ReqSchema>(fn: (req: TypedRequest<T>, res: Response, next?: NextFunction) => Promise<void>) => {
-    return (req: Request, res: Response, next: NextFunction) => {
-        fn(req as unknown as TypedRequest<T>, res, next).catch(next);
+    return async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            await fn(req as unknown as TypedRequest<T>, res, next);
+        } catch (error) {
+            next(error);
+        }
     };
 };
 
 export const validateRequest = <T extends ReqSchema>(schema: T) => {
     return wrapMiddleware(async (req: Request) => {
         const parsed: SchemaOutput<T> = await schema.parseAsync({
-            body: req.body,
+            body: req.body as unknown,
             query: req.query,
             params: req.params,
         });

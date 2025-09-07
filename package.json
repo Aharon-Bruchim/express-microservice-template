@@ -6,9 +6,15 @@
   "license": "ISC",
   "scripts": {
     "start": "node --async-stack-traces ./dist/index",
-    "dev": "concurrently -n \"APP,TYPECHECK\" -c \"green,cyan\" \"tsx watch src/index.ts\" \"tsc --noEmit --watch\"",
+    "dev": "tsc-watch --noEmit --onSuccess \"npm run tsx src/index.ts\"",
     "test": "vitest --ui --coverage",
-    "build": "tsc"
+    "build": "tsc",
+    "tsx": "tsx",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "prettier": "prettier --config .prettierrc.js src/**/*.ts --check",
+    "prettier:fix": "prettier --config .prettierrc.js src/**/*.ts --write",
+    "knip": "knip"
   },
   "dependencies": {
     "@types/cors": "^2.8.19",
@@ -30,8 +36,7 @@
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
     "@vitest/ui": "^3.2.4",
-    "concurrently": "^9.2.1",
-    "eslint": "^9.34.0",
+    "eslint": "^8.57.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
@@ -39,6 +44,7 @@
     "eslint-plugin-promise": "^7.2.1",
     "knip": "^5.63.1",
     "prettier": "^3.6.2",
+    "tsc-watch": "^7.1.1",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"

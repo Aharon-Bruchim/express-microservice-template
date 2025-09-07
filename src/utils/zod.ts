@@ -1,12 +1,14 @@
 import { Request } from 'express';
-import { z, ZodObject } from 'zod';
+import { z, ZodObject, ZodRawShape } from 'zod';
 
-export const zodMongoObjectId = z.string().regex(/^[0-9a-fA-F]{24}$/, { message: 'Invalid ObjectId' });
+export const zodMongoObjectId = z.string().regex(/^[0-9a-fA-F]{24}$/, {
+    message: 'Invalid ObjectId',
+});
 
 export type ReqSchema = ZodObject<{
-    body: ZodObject<any>;
-    query: ZodObject<any>;
-    params: ZodObject<any>;
+    body: ZodObject<ZodRawShape>;
+    query: ZodObject<ZodRawShape>;
+    params: ZodObject<ZodRawShape>;
 }>;
 
 export type SchemaOutput<T extends ReqSchema> = z.infer<T>;
