@@ -1,15 +1,50 @@
-שנה השם בפאקט גייסון
-מ
-"name": "template",
+# template
 
-לשם האפליקציה שלך.
+ברוכים הבאים לפרויקט **template**!
 
-ב
-config.ts
-שנה
-paymentCollectionName: env.get('PAYMENT_REQUESTS_AUTOMATIC').required().asString(),
-ל שם האפליקציה שתרצה במונגו
+## התקנה
 
-שנה
-paymentCollectionName: env.get('PAYMENT_REQUESTS_AUTOMATIC').required().asString(),
-ל שם הקולקשיין שתרצה בתוך האפליקציה
+1. יש לוודא שמותקן Node.js ו־npm במחשב.
+2. לשכפל את הריפוזיטורי:
+    ```bash
+    git clone <repository-url>
+    cd template
+    ```
+3. להתקין את התלויות:
+    ```bash
+    npm install
+    ```
+
+## קונפיגורציה
+
+ערכו את הקובץ `config.ts` לפי הצרכים שלכם:
+
+- לשם הקולקשיין של תשלומים במונגו:
+
+    ```typescript
+    paymentCollectionName: 'שם_הקולקשיין_שלך',
+    ```
+
+- ניתן להגדיר משתני סביבה בקובץ `.env`.
+
+## הפעלה
+
+להריץ את האפליקציה:
+
+```bash
+npm start
+```
+
+## מבנה הפרויקט
+
+- `src/` — קוד המקור של האפליקציה
+- `config.ts` — הגדרות וקונפיגורציה
+- `package.json` — מידע על הפרויקט ותלויות
+
+## תרומה
+
+נשמח לקבל Pull Requests ושיפורים!
+
+## רישיון
+
+הפרויקט תחת רישיון
