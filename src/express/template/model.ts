@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import { config } from '../../config';
-import { PaymentDocument } from './interface';
+import { TemplateDocument } from './interface';
 
-const PaymentSchema = new mongoose.Schema<PaymentDocument>(
+const TemplateSchema = new mongoose.Schema<TemplateDocument>(
     {
         name: {
             type: String,
@@ -17,4 +17,4 @@ const PaymentSchema = new mongoose.Schema<PaymentDocument>(
     },
 );
 
-export const PaymentModel = mongoose.model<PaymentDocument>(config.mongo.paymentCollectionName, PaymentSchema);
+export const TemplateModel = mongoose.model<TemplateDocument>(config.mongo.templateCollectionName, TemplateSchema);

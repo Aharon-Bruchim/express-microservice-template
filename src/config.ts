@@ -13,7 +13,7 @@ export const config = {
     },
     mongo: {
         uri: env.get('MONGO_URI').required().asString(),
-        paymentCollectionName: env.get('PAYMENT_REQUESTS_AUTOMATIC').required().asString(),
+        templateCollectionName: env.get('TEMPLATE_REQUESTS_AUTOMATIC').required().asString(),
     },
     cors: {
         origin: env.get('CORS_ORIGIN').required().asString(),

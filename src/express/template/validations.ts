@@ -8,7 +8,7 @@ const requiredFields = z
     })
     .required();
 
-// GET /api/payment
+// GET /api/template
 export const getByQueryRequestSchema = z.object({
     body: z.object({}),
     query: z
@@ -21,14 +21,14 @@ export const getByQueryRequestSchema = z.object({
     params: z.object({}),
 });
 
-// GET /api/payment/count
+// GET /api/template/count
 export const getCountRequestSchema = z.object({
     body: z.object({}),
     query: requiredFields.partial(),
     params: z.object({}),
 });
 
-// GET /api/payment/:id
+// GET /api/template/:id
 export const getByIdRequestSchema = z.object({
     body: z.object({}),
     query: z.object({}),
@@ -37,14 +37,14 @@ export const getByIdRequestSchema = z.object({
     }),
 });
 
-// POST /api/payment
+// POST /api/template
 export const createOneRequestSchema = z.object({
     body: requiredFields,
     query: z.object({}),
     params: z.object({}),
 });
 
-// PUT /api/payment/:id
+// PUT /api/template/:id
 export const updateOneRequestSchema = z.object({
     body: requiredFields.partial(),
     query: z.object({}),
@@ -53,7 +53,7 @@ export const updateOneRequestSchema = z.object({
     }),
 });
 
-// DELETE /api/payment/:id
+// DELETE /api/template/:id
 export const deleteOneRequestSchema = z.object({
     body: z.object({}),
     query: z.object({}),
