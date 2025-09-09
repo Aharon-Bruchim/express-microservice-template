@@ -48,7 +48,7 @@ touch .env.production
 ```env
 PORT=8000
 MONGO_URI=mongodb://localhost:27017/your-database
-TEMPLATE_SERVICE=templates
+TEMPLATE_SERVICE=templates  # Change to your collection name
 CORS_ORIGIN=http://localhost:5173
 ```
 
