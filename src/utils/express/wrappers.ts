@@ -25,9 +25,9 @@ export const wrapController = <T extends ReqSchema>(fn: (req: TypedRequest<T>, r
 export const validateRequest = <T extends ReqSchema>(schema: T) => {
     return wrapMiddleware(async (req: Request) => {
         const parsed: SchemaOutput<T> = await schema.parseAsync({
-            body: req.body as unknown,
-            query: req.query,
-            params: req.params,
+            body: (req.body ?? {}) as Record<string, unknown>,
+            query: (req.query ?? {}) as Record<string, unknown>,
+            params: (req.params ?? {}) as Record<string, unknown>,
         });
 
         const r = req as unknown as TypedRequest<T>;
